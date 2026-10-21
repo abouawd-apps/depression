@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من أين يأتى الاكتئاب؟ | Where Does Depression Come From?</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo for Arabic & Inter for English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        arabic: ['Cairo', 'sans-serif'],
+                        english: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+        html[dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        html[dir="ltr"] body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .breathing-circle {
+            transition: transform 4s ease-in-out, box-shadow 4s ease-in-out;
+        }
+        .breathing-inhale {
+            transform: scale(1.42);
+            box-shadow: 0 0 55px rgba(20, 184, 166, 0.55);
+        }
+        .breathing-hold {
+            transform: scale(1.42);
+            box-shadow: 0 0 70px rgba(99, 102, 241, 0.65);
+        }
+        .breathing-exhale {
+            transform: scale(1.0);
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+        }
+        /* Custom Range Slider */
+        input[type=range] {
+            accent-color: #14b8a6;
+        }
+        .tab-active {
+            background: linear-gradient(135deg, #0d9488 0%, #4f46e5 100%);
+            color: #ffffff !important;
+            box-shadow: 0 8px 20px -4px rgba(13, 148, 136, 0.45);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col selection:bg-teal-500 selection:text-white">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 bg-white/85 dark:bg-slate-900/85 glass-card border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+            <!-- Brand & Channel Identity -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/25 shrink-0">
+                    <i class="fa-solid fa-brain text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                            Abouawd Studio
+                        </span>
+                    </div>
+                    <h1 id="nav-title" class="text-base sm:text-lg font-extrabold bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-600 dark:from-teal-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+                        من أين يأتى الاكتئاب؟
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Quick Section Jump Links (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-1 bg-slate-100 dark:bg-slate-800/90 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                <a href="#section-video" id="nav-link-video" class="px-3.5 py-1.5 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition">الفيديو والمحاور</a>
+                <a href="#section-roots" id="nav-link-roots" class="px-3.5 py-1.5 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition">جذور الاكتئاب</a>
+                <a href="#section-simulator" id="nav-link-sim" class="px-3.5 py-1.5 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition">محاكي الأفكار</a>
+                <a href="#section-quiz" id="nav-link-quiz" class="px-3.5 py-1.5 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition">التقييم الذاتي</a>
+                <a href="#section-recovery" id="nav-link-recovery" class="px-3.5 py-1.5 rounded-xl text-sm font-semibold hover:bg-white dark:hover:bg-slate-700 transition">حقيبة التعافي</a>
+            </nav>
+
+            <!-- Controls: Language Switcher & Dark Mode Toggle -->
+            <div class="flex items-center gap-2.5">
+                <!-- Language Switch Button -->
+                <button id="lang-toggle-btn" onclick="toggleLanguage()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-sm font-bold transition-all active:scale-95 shadow-sm" aria-label="Toggle Language">
+                    <i class="fa-solid fa-earth-americas text-teal-500"></i>
+                    <span id="lang-btn-text">English</span>
+                </button>
+
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle-btn" onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-amber-400 transition-all active:scale-95 shadow-sm" aria-label="Toggle Dark Mode">
+                    <i id="theme-icon" class="fa-solid fa-sun text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-14">
+
+        <!-- Hero & Video Section -->
+        <section id="section-video" class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 text-white border border-slate-800 shadow-2xl p-6 sm:p-10">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-teal-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Hero Text & Highlights -->
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/15 border border-teal-400/30 text-teal-300 text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+                        <span id="hero-badge">رحلة تفاعلية في أعماق النفس البشرية</span>
+                    </div>
+
+                    <h2 id="hero-title" class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
+                        من أين يأتى الاكتئاب؟ وكيف نستعيد توازننا النفسي؟
+                    </h2>
+
+                    <p id="hero-desc" class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        الاكتئاب ليس مجرد حزن عابر، بل هو محصلة تفاعل دقيق بين الأفكار والبرمجة الذهنية، كيمياء الدماغ ولصوص الطاقة، الضغوط البيئية، وفقدان المعنى الروحي. استكشف جذور الاكتئاب وحلوله العملية من خلال هذا الدليل التفاعلي المبني على الفيديو.
+                    </p>
+
+                    <!-- Quick Interactive Stats Pills -->
+                    <div class="grid grid-cols-3 gap-3 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-3.5 text-center">
+                            <div class="text-xl sm:text-2xl font-black text-teal-400">60,000</div>
+                            <div id="stat-1-label" class="text-xs text-slate-300 mt-1">فكرة يومياً تعبر الذهن</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-3.5 text-center">
+                            <div class="text-xl sm:text-2xl font-black text-indigo-400">4 أبعاد</div>
+                            <div id="stat-2-label" class="text-xs text-slate-300 mt-1">فكرية وحيوية ونفسية وروحية</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-3.5 text-center">
+                            <div class="text-xl sm:text-2xl font-black text-emerald-400">100%</div>
+                            <div id="stat-3-label" class="text-xs text-slate-300 mt-1">قابلية للتعافي وبناء الوعي</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="#section-roots" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-400 hover:to-emerald-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-teal-500/25 flex items-center gap-2 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-compass"></i>
+                            <span id="hero-btn-explore">استكشف الجذور الآن</span>
+                        </a>
+                        <a href="https://youtu.be/leISe1BUDwU?si=AXAvzIK_7zhD5elz" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-bold text-sm sm:text-base flex items-center gap-2 transition">
+                            <i class="fa-brands fa-youtube text-red-500 text-lg"></i>
+                            <span id="hero-btn-yt">مشاهدة على يوتيوب</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Embedded YouTube Video Player + Interactive Key Timestamps -->
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700/80 bg-black aspect-video">
+                        <iframe
+                            id="yt-iframe"
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/leISe1BUDwU?rel=0"
+                            title="من أين يأتى الاكتئاب؟ - Abouawd Studio"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Video Interactive Chapters / Highlights -->
+                    <div class="bg-slate-800/70 border border-slate-700/70 rounded-2xl p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span id="chapters-title" class="text-xs font-bold uppercase tracking-wider text-teal-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-list-check"></i> المحاور الأساسية في الفيديو
+                            </span>
+                            <span id="video-duration-badge" class="text-xs text-slate-400 font-mono">07:55</span>
+                        </div>
+                        <div id="chapters-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-roots" class="space-y-6">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <span id="roots-badge" class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                    التشريح التفاعلي للمسببات
+                </span>
+                <h2 id="roots-title" class="text-2xl sm:text-3xl font-extrabold">
+                    من أين يأتى الاكتئاب؟ المصادر الأربعة الكبرى
+                </h2>
+                <p id="roots-subtitle" class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                    اضغط على كل محور لاستكشاف الآلية الخفية التي يتسلل بها الاكتئاب إلى النفس، وكيف تتقاطع الأفكار مع الكيمياء الحيوية والبيئة المحيطة.
+                </p>
+            </div>
+
+            <!-- Interactive Dimension Tabs -->
+            <div id="roots-tabs" class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Active Dimension Detailed View -->
+            <div id="root-detail-card" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl transition-all">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <section id="section-simulator" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Left Column: Daily Mental & Energy Simulator -->
+            <div class="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <span id="sim-badge" class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400">
+                            مختبر التوازن الحيوي والفكري
+                        </span>
+                        <h3 id="sim-title" class="text-xl sm:text-2xl font-extrabold mt-2">
+                            محاكي الـ 60,000 فكرة وميزان الطاقة اليومي
+                        </h3>
+                        <p id="sim-desc" class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                            تشير الدراسات النفسية إلى أن الإنسان يمر بذهنه نحو 60,000 فكرة يومياً، وقد يصل 80% منها إلى السلبية إذا غابت الحصانة الفكرية. حرّك المؤشرات لترى تأثير عاداتك على كيمياء دماغك!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Sliders -->
+                <div class="space-y-4">
+                    <!-- Slider 1: Positive Self-Talk -->
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                        <div class="flex justify-between text-sm font-bold mb-1.5">
+                            <span id="slider-1-label"><i class="fa-solid fa-comments text-teal-500 me-1.5"></i> جودة الحديث الذاتي والحصانة الفكرية</span>
+                            <span id="slider-1-val" class="text-teal-600 dark:text-teal-400">70%</span>
+                        </div>
+                        <input id="input-selftalk" type="range" min="0" max="100" value="70" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Slider 2: Media & Negative Triggers Exposure -->
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                        <div class="flex justify-between text-sm font-bold mb-1.5">
+                            <span id="slider-2-label"><i class="fa-solid fa-tv text-rose-500 me-1.5"></i> التعرض للأخبار السلبية والمقارنات الرقمية</span>
+                            <span id="slider-2-val" class="text-rose-500">30%</span>
+                        </div>
+                        <input id="input-media" type="range" min="0" max="100" value="30" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Slider 3: Physical Energy (Sleep, Nutrition, Breathing) -->
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                        <div class="flex justify-between text-sm font-bold mb-1.5">
+                            <span id="slider-3-label"><i class="fa-solid fa-heart-pulse text-indigo-500 me-1.5"></i> التنفس العميق والغذاء المتوازن والنوم</span>
+                            <span id="slider-3-val" class="text-indigo-500">65%</span>
+                        </div>
+                        <input id="input-vitality" type="range" min="0" max="100" value="65" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Slider 4: Spiritual & Social Connection -->
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                        <div class="flex justify-between text-sm font-bold mb-1.5">
+                            <span id="slider-4-label"><i class="fa-solid fa-Hands-praying text-amber-500 me-1.5"></i> الأنس الروحي والمعنى والتواصل الإيجابي</span>
+                            <span id="slider-4-val" class="text-amber-500">75%</span>
+                        </div>
+                        <input id="input-spirit" type="range" min="0" max="100" value="75" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Real-Time Simulation Output Dashboard -->
+                <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-5 border border-slate-700 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+                            <div id="sim-out-pos-label" class="text-xs text-slate-300">الأفكار الإيجابية البناءة</div>
+                            <div id="sim-out-pos-val" class="text-2xl font-black text-emerald-400 mt-1">42,600</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+                            <div id="sim-out-neg-label" class="text-xs text-slate-300">الأفكار السلبية المستنزفة</div>
+                            <div id="sim-out-neg-val" class="text-2xl font-black text-rose-400 mt-1">17,400</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-3 border border-white/10">
+                            <div id="sim-out-immunity-label" class="text-xs text-slate-300">مؤشر الحصانة النفسية</div>
+                            <div id="sim-out-immunity-val" class="text-2xl font-black text-teal-400 mt-1">71%</div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Bar of 60k Thoughts -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span id="sim-bar-pos-text" class="text-emerald-400">طاقة إيجابية وتفاؤل</span>
+                            <span id="sim-bar-neg-text" class="text-rose-400">استنزاف وقلق</span>
+                        </div>
+                        <div class="w-full h-4 bg-rose-500/40 rounded-full overflow-hidden flex">
+                            <div id="sim-bar-fill" class="h-full bg-gradient-to-r from-teal-400 to-emerald-500 transition-all duration-300" style="width: 71%"></div>
+                        </div>
+                    </div>
+
+                    <p id="sim-status-msg" class="text-xs sm:text-sm text-slate-200 bg-white/5 p-3 rounded-xl border border-white/10 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Right Column: Cognitive Reframing Tool ("إلغاء واستبدال الفكرة") -->
+            <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+                <div>
+                    <span id="reframe-badge" class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                        تقنية إعادة البناء المعرفي
+                    </span>
+                    <h3 id="reframe-title" class="text-xl sm:text-2xl font-extrabold mt-2">
+                        محول الأفكار السلبية (ألغِ واستبدل)
+                    </h3>
+                    <p id="reframe-desc" class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                        اختر فكرة من الأفكار المسببة للاكتئاب لترى كيف يحللها الوعي السليم ويستبدلها بـ "عدسة صحية" تحمي الدماغ من الاستنزاف.
+                    </p>
+                </div>
+
+                <!-- Thought Selector Buttons -->
+                <div id="thought-buttons-list" class="space-y-2.5">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Transformation Card -->
+                <div id="thought-transform-box" class="rounded-2xl p-5 bg-gradient-to-br from-teal-500/10 via-indigo-500/10 to-purple-500/10 border border-teal-500/30 space-y-4">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="section-quiz" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+                <div>
+                    <span id="quiz-badge" class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                        اعرف نفسك بنفسك
+                    </span>
+                    <h2 id="quiz-title" class="text-2xl sm:text-3xl font-extrabold mt-2">
+                        مقياس الوعي النفسي ومؤشر لصوص الطاقة
+                    </h2>
+                    <p id="quiz-subtitle" class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-1">
+                        أجب عن هذه الأسئلة الـ 6 لاكتشاف مدى توازنك الحالي وتحديد أي المصادر يستنزف طاقتك النفسية والحيوية.
+                    </p>
+                </div>
+                <button onclick="resetQuiz()" class="self-start md:self-center px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span id="quiz-reset-btn">إعادة الاختبار</span>
+                </button>
+            </div>
+
+            <!-- Questions Grid -->
+            <div id="quiz-questions-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Quiz Result Panel -->
+            <div id="quiz-result-panel" class="rounded-2xl p-6 bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 flex flex-col lg:flex-row items-center justify-between gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <section id="section-recovery" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Guided Breathing Exercise (4-7-8 / Deep Oxygenation) -->
+            <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-teal-800/50 shadow-xl flex flex-col justify-between space-y-6">
+                <div class="space-y-2">
+                    <span id="breath-badge" class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-teal-400/15 text-teal-300 border border-teal-400/30">
+                        أول مفاتيح الطاقة الحيوية
+                    </span>
+                    <h3 id="breath-title" class="text-xl sm:text-2xl font-extrabold">
+                        مدرب التنفس العميق لتهدئة الجهاز العصبي
+                    </h3>
+                    <p id="breath-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        أغلب الناس يستخدمون أقل من ثلث سعة الرئتين. التنفس العميق يمد خلايا الدماغ بالأكسجين ويكسر حلقة القلق والتوتر فوراً.
+                    </p>
+                </div>
+
+                <!-- Animated Breathing Circle -->
+                <div class="py-8 flex flex-col items-center justify-center relative">
+                    <div id="breath-circle" class="w-40 h-40 rounded-full bg-gradient-to-tr from-teal-500 to-indigo-500 flex flex-col items-center justify-center text-center p-4 shadow-xl breathing-circle">
+                        <span id="breath-phase-text" class="text-lg font-black">اضغط للبدء</span>
+                        <span id="breath-timer-text" class="text-2xl font-mono font-bold mt-1 opacity-90">--</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center gap-3">
+                    <button id="breath-btn" onclick="toggleBreathing()" class="w-full py-3.5 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm sm:text-base transition shadow-lg shadow-teal-500/30 flex items-center justify-center gap-2">
+                        <i id="breath-btn-icon" class="fa-solid fa-play"></i>
+                        <span id="breath-btn-label">بدء جلسة التنفس التفاعلية</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Daily Anti-Depression Action Plan Checklist -->
+            <div class="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <span id="checklist-badge" class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                            خطوات عملية يومية
+                        </span>
+                        <h3 id="checklist-title" class="text-xl sm:text-2xl font-extrabold mt-2">
+                            حقيبة الحصانة النفسية والوقاية اليومية
+                        </h3>
+                    </div>
+                    <div class="text-center bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-2xl">
+                        <div id="checklist-progress-num" class="text-xl font-black text-emerald-600 dark:text-emerald-400">0 / 6</div>
+                        <div id="checklist-progress-label" class="text-[11px] text-slate-500 dark:text-slate-400">مكتمل اليوم</div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div id="checklist-bar" class="h-full bg-gradient-to-r from-teal-500 to-emerald-500 transition-all duration-300" style="width: 0%"></div>
+                </div>
+
+                <!-- Checklist Items -->
+                <div id="checklist-items" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col items-center text-center space-y-5">
+                <!-- Channel & Video Badge -->
+                <div class="flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                        <i class="fa-brands fa-youtube text-lg"></i>
+                    </span>
+                    <div class="text-start">
+                        <div id="footer-channel-title" class="text-sm font-extrabold">Abouawd Studio | من أين يأتى الاكتئاب؟</div>
+                        <div id="footer-disclaimer" class="text-xs text-slate-500 dark:text-slate-400">محتوى تثقيفي وتوعوي لتعزيز الصحة النفسية والوعي الذاتي</div>
+                    </div>
+                </div>
+
+                <!-- Mandatory Signature Box -->
+                <div class="w-full max-w-2xl rounded-2xl p-5 bg-gradient-to-r from-teal-500/10 via-indigo-500/10 to-purple-500/10 border border-teal-500/30 dark:border-teal-400/30 shadow-inner">
+                    <p id="footer-credit-primary" class="text-lg sm:text-xl font-black bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-600 dark:from-teal-300 dark:via-indigo-300 dark:to-purple-300 bg-clip-text text-transparent">
+                        تصميم محمد عوض خير بمساعدة Gemini 4 Argon
+                    </p>
+                    <p id="footer-credit-secondary" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 mt-1">
+                        Designed by Mohamed Awad Khair with the help of Gemini 4 Argon
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'ar';
+        let isDarkMode = true;
+        let activeRootIndex = 0;
+        let activeThoughtIndex = 0;
+        let quizAnswers = [null, null, null, null, null, null];
+        let checklistState = [false, false, false, false, false, false];
+        let breathingInterval = null;
+        let isBreathing = false;
+
+        const contentData = {
+            ar: {
+                navTitle: "من أين يأتى الاكتئاب؟",
+                navLinks: ["الفيديو والمحاور", "جذور الاكتئاب", "محاكي الأفكار", "التقييم الذاتي", "حقيبة التعافي"],
+                langBtnText: "English",
+                heroBadge: "رحلة تفاعلية في أعماق النفس البشرية • Abouawd Studio",
+                heroTitle: "من أين يأتى الاكتئاب؟ وكيف نستعيد توازننا النفسي؟",
+                heroDesc: "الاكتئاب ليس مجرد حزن عابر، بل هو محصلة تفاعل دقيق بين الأفكار والبرمجة الذهنية، كيمياء الدماغ ولصوص الطاقة، الضغوط البيئية، وفقدان المعنى الروحي. استكشف جذور الاكتئاب وحلوله العملية من خلال هذا التطبيق التفاعلي.",
+                stat1Label: "فكرة يومياً تعبر الذهن",
+                stat2Label: "فكرية وحيوية ونفسية وروحية",
+                stat3Label: "قابلية للوعي والتعافي",
+                heroBtnExplore: "استكشف الجذور الآن",
+                heroBtnYt: "مشاهدة الفيديو على يوتيوب",
+                chaptersTitle: "المحاور الأساسية في الفيديو",
+                chapters: [
+                    { icon: "fa-brain", title: "1. البرمجة الذهنية والحديث مع الذات", desc: "كيف تتحول الأفكار السلبية المتكررة إلى حالة شعورية دائمة." },
+                    { icon: "fa-battery-quarter", title: "2. لصوص الطاقة وكيمياء الدماغ", desc: "تأثير القلق، الإجهاد، الغذاء، ونقص النواقل العصبية." },
+                    { icon: "fa-users-viewfinder", title: "3. المؤثرات البيئية والإعلام", desc: "دور المقارنات، الضغوط الاجتماعية، والأخبار السلبية." },
+                    { icon: "fa-seedling", title: "4. الحصانة الفكرية والأنس الروحي", desc: "استعادة المعنى، تعديل العدسات الفكرية، وبناء التوازن." }
+                ],
+                rootsBadge: "التشريح التفاعلي للمسببات",
+                rootsTitle: "من أين يأتى الاكتئاب؟ المصادر الأربعة الكبرى",
+                rootsSubtitle: "اضغط على كل محور لاستكشاف الآلية الخفية التي يتسلل بها الاكتئاب إلى النفس، وكيف تتقاطع الأفكار مع الكيمياء الحيوية والبيئة المحيطة.",
+                rootsDimensions: [
+                    {
+                        id: "cognitive",
+                        icon: "fa-comments",
+                        title: "1. الجذور الفكرية والحديث الذاتي",
+                        short: "القاتل الصامت والبرمجة الذهنية",
+                        color: "from-teal-500 to-emerald-600",
+                        summary: "يستقبل عقل الإنسان أكثر من 60,000 فكرة يومياً. عندما تغيب الرقابة الواعية، تصبح 80% من هذه الأفكار سلبية وتعمل ضد مصلحة الإنسان، مما يصنع ملفات ذهنية راسخة تقود إلى الاكتئاب.",
+                        points: [
+                            { title: "التحدث السلبي مع الذات", text: "اجترار آلام الماضي أو توقع المصائب في المستقبل قبل حدوثها (مع أن 93% مما نقلق بشأنه لا يحدث أبداً)." },
+                            { title: "المصادر السبعة للبرمجة", text: "الوالدان، المحيط العائلي، المجتمع، المدرسة، الأصدقاء، وسائل الإعلام (التي تسهم في أكثر من 60% من حالات الضيق)، وبرمجة الذات." },
+                            { title: "العدسات والنماذج المشوشة", text: "رؤية الذات والعالم عبر عدسة التعميم السلبي والتركيز على النقص بدلاً من الإمكانات." }
+                        ],
+                        antidote: "الحل العملي: راقب أفكارك كما تراقب طعامك؛ لا تقبل غذاءً فكرياً سلبياً، وطبّق قاعدة (ألغِ الفكرة السلبية واستبدلها بأخرى إيجابية واقعية)."
+                    },
+                    {
+                        id: "biological",
+                        icon: "fa-heart-pulse",
+                        title: "2. الجذور الحيوية ولصوص الطاقة",
+                        short: "كيمياء الدماغ واستنزاف الجسد",
+                        color: "from-indigo-500 to-blue-600",
+                        summary: "العقل السليم في الجسم السليم؛ اضطراب النواقل العصبية (السيروتونين، الدوبامين، النورأدرينالين) مع إهمال الطاقة الجسمانية يجعل الدماغ أكثر عرضة للانهيار النفسي.",
+                        points: [
+                            { title: "لصوص الطاقة الثلاثة", text: "1) سوء الهضم والغذاء غير الصحي، 2) القلق المستمر الذي يسلب الطاقة العاطفية والعقلية، 3) الإجهاد البدني المزمن وقلة النوم." },
+                            { title: "التنفس السطحي ونقص الأكسجين", text: "أغلب الناس يستخدمون أقل من ثلث قدرة الرئتين، مما يضعف حيوية الخلايا ويزيد التوتر العصبي." },
+                            { title: "نقص الفيتامينات والحركة", text: "نقص فيتامين د وحمض الفوليك والانعزال عن ضوء الشمس والرياضة يخفض هرمونات السعادة طبيعياً." }
+                        ],
+                        antidote: "الحل العملي: خصص 15 دقيقة يومياً للنشاط البدني، مارس التنفس البطني العميق، واحرص على الغذاء المتوازن والنوم المبكر."
+                    },
+                    {
+                        id: "psychosocial",
+                        icon: "fa-people-arrows",
+                        title: "3. الجذور النفسية والاجتماعية",
+                        short: "المقارنات والمراكز الهشة للحياة",
+                        color: "from-purple-500 to-pink-600",
+                        summary: "يأتي الاكتئاب حين يبني الإنسان قيمته الذاتية على أسس خارجية متقلبة، أو حين يتعرض لضغوط وصدمات دون تفريغ صحي أو شبكة دعم حقيقية.",
+                        points: [
+                            { title: "الارتكاز على مراكز حياة غير مستقرة", text: "من يربط سعادته وهويته بالممتلكات، أو إرضاء الناس، أو المظاهر، ينهار نفسياً عند أول تغير في الظروف." },
+                            { title: "العزلة الاجتماعية والفراغ", text: "الانسحاب من العلاقات الصحية والغرق في العالم الافتراضي يضاعف الشعور بالوحدة والاغتراب." },
+                            { title: "الصدمات والضغوط المكبوتة", text: "فقدان الأحباء أو الأزمات المهنية والأسرية غير المعالجة تتحول إلى عبء نفسي ثقيل." }
+                        ],
+                        antidote: "الحل العملي: لا تقارن باطن حياتك بظاهر حياة الآخرين، تواصل مع أشخاص إيجابيين، ولا تتردد في طلب المشورة النفسية المختصة عند الحاجة."
+                    },
+                    {
+                        id: "spiritual",
+                        icon: "fa-mosque",
+                        title: "4. الجذور الروحية وفقدان المعنى",
+                        short: "خواء الروح وغياب السكينة",
+                        color: "from-amber-500 to-teal-600",
+                        summary: "الإنسان مكون من جسد وعقل وروح؛ وحين يطغى الجانب المادي وتُهمل الروح، ينشأ فراغ داخلي عميق لا تملؤه الماديات، بل يملؤه الإيمان والذكر والغاية النبيلة.",
+                        points: [
+                            { title: "فقدان البوصلة والغاية", text: "العيش في حلقة مفرغة من الروتين اليومي دون هدف أسمى يستنزف الشغف بالحياة." },
+                            { title: "الغفلة عن السكينة الروحية", text: "الابتعاد عن رحاب الذكر والتأمل والامتنان يجعل القلب هشاً أمام تقلبات الحياة." },
+                            { title: "ضعف التوكل والرضا", text: "حمل هموم المستقبل المجهول بدلاً من الأخذ بالأسباب مع التسليم والطمأنينة." }
+                        ],
+                        antidote: "الحل العملي: ابنِ حصانتك الفكرية والروحية بالذكر، الامتنان اليومي، العمل الصالح، وتذكر دائماً أن الحياة أمانة تستحق أن تُعاش بالأمل والإيمان."
+                    }
+                ],
+                simBadge: "مختبر التوازن الحيوي والفكري",
+                simTitle: "محاكي الـ 60,000 فكرة وميزان الطاقة اليومي",
+                simDesc: "تشير الدراسات إلى أن الإنسان يمر بذهنه نحو 60,000 فكرة يومياً، وقد يصل 80% منها إلى السلبية إذا غابت الحصانة الفكرية. حرّك المؤشرات لترى تأثير عاداتك على توازنك النفسي!",
+                slider1: "جودة الحديث الذاتي والحصانة الفكرية",
+                slider2: "التعرض للأخبار السلبية والمقارنات الرقمية",
+                slider3: "التنفس العميق والغذاء المتوازن والنوم",
+                slider4: "الأنس الروحي والمعنى والتواصل الإيجابي",
+                simOutPosLabel: "الأفكار الإيجابية البناءة",
+                simOutNegLabel: "الأفكار السلبية المستنزفة",
+                simOutImmLabel: "مؤشر الحصانة النفسية",
+                simBarPos: "طاقة إيجابية وتفاؤل",
+                simBarNeg: "استنزاف وقلق",
+                reframeBadge: "تقنية إعادة البناء المعرفي",
+                reframeTitle: "محول الأفكار السلبية (ألغِ واستبدل)",
+                reframeDesc: "اختر فكرة من الأفكار المسببة للاكتئاب لترى كيف يحللها الوعي السليم ويستبدلها بـ «عدسة صحية» تحمي الدماغ من الاستنزاف.",
+                thoughts: [
+                    {
+                        neg: "«لا فائدة من المحاولة، كل شيء يسير نحو الأسوأ ولن يتغير حالي.»",
+                        distortion: "التشوه المعرفي: التعميم المفرط والتوقع الكارثي (برمجة سلبية تسلب الطاقة الجسمانية والعاطفية).",
+                        pos: "«أنا أتحكم في أفعالي وأفكاري اليوم؛ كل خطوة صغيرة في الاتجاه الصحيح تصنع فرقاً حقيقياً مع الوقت.»"
+                    },
+                    {
+                        neg: "«قيمتي تعتمد على ما أملكه أو نظرة الآخرين لي، وأشعر أنني أقل منهم.»",
+                        distortion: "التشوه المعرفي: بناء المركز الحياتي على الأغراض والمقارنات الزائفة بدلاً من القيمة الذاتية الأصيلة.",
+                        pos: "«قيمتي تنبع من صدق قلبي ومبادئي وسعيي المستمر، ورحلتي في الحياة فريدة ولا تقاس بمظاهر الآخرين.»"
+                    },
+                    {
+                        neg: "«أشعر بإرهاق دائم وضيق مستمر، لا بد أن هناك مصيبة ستحدث قريباً.»",
+                        distortion: "التشوه المعرفي: القلق الاستباقي (93% من المخاوف المستقبلية لا تحدث أبداً ولكنها تستنزف 75% من صحة الجسد).",
+                        pos: "«سأتنفس بعمق الآن، وأركز طاقتي في اللحظة الحاضرة، وأتوكل على الله فيما لا أملكه.»"
+                    },
+                    {
+                        neg: "«لقد أخطأت في الماضي ولا يمكنني تجاوز تلك التجربة المؤلمة.»",
+                        distortion: "التشوه المعرفي: السجن في ملفات الذاكرة السلبية وإعادة عيش نفس الألم مراراً.",
+                        pos: "«الماضي درسٌ تعلّمت منه وليس سجناً أقيم فيه؛ أنا اليوم أكثر وعياً وقوة لبناء غدي.»"
+                    }
+                ],
+                quizBadge: "اعرف نفسك بنفسك",
+                quizTitle: "مقياس الوعي النفسي ومؤشر لصوص الطاقة",
+                quizSubtitle: "أجب عن هذه الأسئلة الـ 6 لاكتشاف مدى توازنك الحالي وتحديد أي المصادر يستنزف طاقتك النفسية والحيوية.",
+                quizResetBtn: "إعادة الاختبار",
+                quizOptions: [
+                    { label: "نادراً / أبداً", score: 0 },
+                    { label: "أحياناً", score: 1 },
+                    { label: "غالباً / دائماً", score: 2 }
+                ],
+                quizQuestions: [
+                    "1. هل تجد نفسك في حوار داخلي سلبي يلوم الذات أو يتوقع الأسوأ قبل حدوث المواقف؟",
+                    "2. هل تستيقظ صباحاً وأنت تشعر بالتعب والإرهاق رغم نومك لعدد ساعات كافٍ؟",
+                    "3. هل تقضي وقتاً طويلاً في متابعة الأخبار المحزنة أو مقارنة حياتك بالآخرين عبر الشاشات؟",
+                    "4. هل تشعر بضيق في التنفس أو توتر عضلي وتنسى أخذ أنفاس عميقة خلال اليوم؟",
+                    "5. هل تميل إلى الانعزال عن المحيطين بك وفقدان الشغف بالأنشطة التي كنت تحبها؟",
+                    "6. هل تشعر بأن يومك يمر في روتين مستنزف يفتقر إلى لحظات السكينة الروحية والامتنان؟"
+                ],
+                breathBadge: "أول مفاتيح الطاقة الحيوية",
+                breathTitle: "مدرب التنفس العميق لتهدئة الجهاز العصبي",
+                breathDesc: "أغلب الناس يستخدمون أقل من ثلث سعة الرئتين. التنفس العميق يمد خلايا الدماغ بالأكسجين ويكسر حلقة القلق والتوتر فوراً.",
+                breathStartText: "اضغط للبدء",
+                breathBtnStart: "بدء جلسة التنفس التفاعلية",
+                breathBtnStop: "إيقاف الجلسة",
+                breathPhases: { inhale: "شهيق عميق...", hold: "احتفظ بالهواء...", exhale: "زفير هادئ..." },
+                checklistBadge: "خطوات عملية يومية",
+                checklistTitle: "حقيبة الحصانة النفسية والوقاية اليومية",
+                checklistDoneLabel: "مكتمل اليوم",
+                checklistItems: [
+                    { title: "فلترة الغذاء الفكري صباحاً", desc: "ابدأ يومك بالذكر والتفاؤل وتجنب الأخبار السلبية أول ساعة." },
+                    { title: "جلسة تنفس عميق (5 دقائق)", desc: "تنفس بعمق لملء الرئتين بالأكسجين وتجديد طاقة الخلايا." },
+                    { title: "تطبيق قاعدة (ألغِ واستبدل)", desc: "رصد أي فكرة سلبية عابرة واستبدالها فوراً برسالة إيجابية." },
+                    { title: "15 دقيقة حركة وتعرض للشمس", desc: "المشي أو التمرين الخفيف لتنشيط الدورة الدموية والسيروتونين." },
+                    { title: "تخفيف لصوص الطاقة الغذائية", desc: "تجنب الوجبات الثقيلة قبل النوم وتقليل المنبهات الزائدة." },
+                    { title: "لحظة أنس روحي وامتنان مسائي", desc: "تدوين 3 نعم في حياتك واستشعار السكينة قبل النوم." }
+                ],
+                footerChannelTitle: "Abouawd Studio | من أين يأتى الاكتئاب؟",
+                footerDisclaimer: "محتوى تثقيفي وتوعوي لتعزيز الصحة النفسية والوعي الذاتي (لا يغني عن الاستشارة الطبية المتخصصة عند الحاجة)",
+                footerCreditPrimary: "تصميم محمد عوض خير بمساعدة Gemini 4 Argon",
+                footerCreditSecondary: "Designed by Mohamed Awad Khair with the help of Gemini 4 Argon"
+            },
+            en: {
+                navTitle: "Where Does Depression Come From?",
+                navLinks: ["Video & Topics", "Root Causes", "Thought Simulator", "Self-Assessment", "Recovery Toolkit"],
+                langBtnText: "العربية",
+                heroBadge: "An Interactive Journey into Mental Well-Being • Abouawd Studio",
+                heroTitle: "Where Does Depression Come From? & How Do We Restore Inner Balance?",
+                heroDesc: "Depression is not merely passing sadness; it is the result of a delicate interplay between cognitive programming, brain chemistry & energy thieves, environmental triggers, and spiritual disconnection. Explore its roots and practical solutions in this interactive guide.",
+                stat1Label: "Daily thoughts crossing the mind",
+                stat2Label: "Cognitive, Bio, Social & Spiritual",
+                stat3Label: "Capacity for awareness & recovery",
+                heroBtnExplore: "Explore Root Causes",
+                heroBtnYt: "Watch on YouTube",
+                chaptersTitle: "Key Pillars Covered in the Video",
+                chapters: [
+                    { icon: "fa-brain", title: "1. Mental Programming & Self-Talk", desc: "How repetitive negative thoughts solidify into chronic emotional states." },
+                    { icon: "fa-battery-quarter", title: "2. Energy Thieves & Brain Chemistry", desc: "The impact of anxiety, exhaustion, diet, and neurotransmitter balance." },
+                    { icon: "fa-users-viewfinder", title: "3. Environmental & Media Triggers", desc: "The role of toxic comparisons, social pressure, and negative media." },
+                    { icon: "fa-seedling", title: "4. Cognitive Immunity & Spiritual Peace", desc: "Restoring meaning, reframing mental lenses, and building resilience." }
+                ],
+                rootsBadge: "Interactive Root-Cause Anatomy",
+                rootsTitle: "Where Does Depression Come From? The 4 Core Dimensions",
+                rootsSubtitle: "Click on each dimension to uncover the hidden mechanisms through which depression develops and how thoughts intersect with biology and environment.",
+                rootsDimensions: [
+                    {
+                        id: "cognitive",
+                        icon: "fa-comments",
+                        title: "1. Cognitive Roots & Inner Self-Talk",
+                        short: "The Silent Killer & Mental Programming",
+                        color: "from-teal-500 to-emerald-600",
+                        summary: "The human mind processes around 60,000 thoughts daily. Without conscious filtering, up to 80% of these thoughts can turn negative, creating deeply ingrained mental files that fuel depression.",
+                        points: [
+                            { title: "Destructive Self-Talk", text: "Ruminating on past regrets or catastrophizing about the future (even though 93% of worried events never happen)." },
+                            { title: "The 7 Sources of Programming", text: "Parents, Family, Society, School, Friends, Media (linked to over 60% of distress cases), and Self-conditioning." },
+                            { title: "Distorted Mental Lenses", text: "Viewing oneself and life through distorted paradigms of inadequacy rather than growth." }
+                        ],
+                        antidote: "Practical Solution: Guard your mind just as you guard your diet—refuse 'junk thoughts' and practice the 'Cancel & Replace' cognitive technique immediately."
+                    },
+                    {
+                        id: "biological",
+                        icon: "fa-heart-pulse",
+                        title: "2. Biological Roots & Energy Thieves",
+                        short: "Brain Chemistry & Physical Depletion",
+                        color: "from-indigo-500 to-blue-600",
+                        summary: "A sound mind resides in a sound body. Imbalances in neurotransmitters (Serotonin, Dopamine, Norepinephrine) combined with physical energy drain make the mind vulnerable to depression.",
+                        points: [
+                            { title: "The 3 Energy Thieves", text: "1) Heavy digestion & poor nutrition, 2) Chronic anxiety draining emotional fuel, 3) Physical overexertion & sleep deprivation." },
+                            { title: "Shallow Breathing & Low Oxygen", text: "Most people use less than one-third of their lung capacity, reducing cellular vitality and heightening stress." },
+                            { title: "Nutrient & Movement Deficits", text: "Lack of Vitamin D, Folic Acid, sunlight, and physical exercise naturally lowers mood-regulating hormones." }
+                        ],
+                        antidote: "Practical Solution: Dedicate 15 minutes daily to brisk movement, practice deep diaphragmatic breathing, and prioritize clean nutrition and restorative sleep."
+                    },
+                    {
+                        id: "psychosocial",
+                        icon: "fa-people-arrows",
+                        title: "3. Psychological & Social Roots",
+                        short: "Comparisons & Unstable Life Centers",
+                        color: "from-purple-500 to-pink-600",
+                        summary: "Depression takes hold when self-worth is anchored to unstable external validation, or when life traumas and social pressures accumulate without healthy emotional processing.",
+                        points: [
+                            { title: "Unstable Life Centers", text: "Centering your identity around possessions, people-pleasing, or status leads to emotional collapse when circumstances shift." },
+                            { title: "Isolation & Digital Alienation", text: "Withdrawing from authentic human connection while over-consuming curated social media feeds deepens loneliness." },
+                            { title: "Unprocessed Grief & Stress", text: "Loss of loved ones, family conflict, or workplace burnout requires compassionate support and healthy release." }
+                        ],
+                        antidote: "Practical Solution: Never compare your inner reality to others' outer highlights, nurture supportive relationships, and seek professional therapy when needed."
+                    },
+                    {
+                        id: "spiritual",
+                        icon: "fa-mosque",
+                        title: "4. Spiritual Roots & Loss of Meaning",
+                        short: "Inner Void & Disconnection from Purpose",
+                        color: "from-amber-500 to-teal-600",
+                        summary: "Humans are composed of body, mind, and spirit. When material rush overshadows spiritual nourishment, an inner void emerges that only faith, remembrance, and purpose can fill.",
+                        points: [
+                            { title: "Loss of Purpose & Direction", text: "Living in a mechanical daily loop without a higher meaning drains enthusiasm and hope." },
+                            { title: "Neglecting Inner Tranquility", text: "Disconnection from spiritual remembrance (Dhikr), mindfulness, and gratitude leaves the heart fragile." },
+                            { title: "Carrying the Burden of the Unknown", text: "Trying to control everything alone instead of combining practical effort with spiritual trust and peace." }
+                        ],
+                        antidote: "Practical Solution: Build spiritual and cognitive immunity through daily remembrance, gratitude, purposeful service, and living with faith and hope."
+                    }
+                ],
+                simBadge: "Bio-Cognitive Balance Lab",
+                simTitle: "The 60,000 Daily Thoughts & Energy Simulator",
+                simDesc: "Research suggests we experience ~60,000 thoughts a day—up to 80% can be negative without mental immunity. Adjust the sliders below to see how your daily habits shape your mind!",
+                slider1: "Positive Self-Talk & Cognitive Immunity",
+                slider2: "Negative Media & Social Comparison Exposure",
+                slider3: "Deep Breathing, Balanced Diet & Sleep",
+                slider4: "Spiritual Peace, Purpose & Healthy Connection",
+                simOutPosLabel: "Constructive Positive Thoughts",
+                simOutNegLabel: "Draining Negative Thoughts",
+                simOutImmLabel: "Psychological Resilience Index",
+                simBarPos: "Positive Energy & Optimism",
+                simBarNeg: "Depletion & Anxiety",
+                reframeBadge: "Cognitive Restructuring Tool",
+                reframeTitle: "Negative Thought Transformer (Cancel & Replace)",
+                reframeDesc: "Select a common depressive thought pattern below to see how conscious awareness dismantles cognitive distortions and replaces them with a healthy perspective.",
+                thoughts: [
+                    {
+                        neg: "\"There is no point in trying; everything is getting worse and nothing will change.\"",
+                        distortion: "Cognitive Distortion: Overgeneralization & Catastrophizing (Negative programming that drains emotional and physical energy).",
+                        pos: "\"I am in control of my thoughts and actions today; every small step in the right direction builds real momentum.\""
+                    },
+                    {
+                        neg: "\"My worth depends on what I own or what others think of me, and I feel behind.\"",
+                        distortion: "Cognitive Distortion: Anchoring life's center on possessions and comparisons rather than authentic intrinsic worth.",
+                        pos: "\"My worth comes from my integrity, principles, and sincere effort; my journey is unique and not measured by appearances.\""
+                    },
+                    {
+                        neg: "\"I feel constantly exhausted and anxious; something terrible is bound to happen soon.\"",
+                        distortion: "Cognitive Distortion: Anticipatory Anxiety (93% of feared future events never happen, yet chronic worry causes 75% of stress illnesses).",
+                        pos: "\"I will breathe deeply right now, focus my energy on what I can do today, and trust gracefully in the unseen.\""
+                    },
+                    {
+                        neg: "\"I made mistakes in the past and I can never recover from that painful experience.\"",
+                        distortion: "Cognitive Distortion: Being trapped in negative memory files and re-living past pain in the present.",
+                        pos: "\"The past is a lesson that made me wiser, not a prison to live in; today I author a healthier chapter.\""
+                    }
+                ],
+                quizBadge: "Know Yourself",
+                quizTitle: "Self-Awareness & Energy Thieves Assessment",
+                quizSubtitle: "Answer these 6 reflection questions to evaluate your current balance and identify which factors are draining your mental vitality.",
+                quizResetBtn: "Reset Assessment",
+                quizOptions: [
+                    { label: "Rarely / Never", score: 0 },
+                    { label: "Sometimes", score: 1 },
+                    { label: "Often / Always", score: 2 }
+                ],
+                quizQuestions: [
+                    "1. Do you find yourself in harsh inner self-talk or expecting the worst before events happen?",
+                    "2. Do you wake up feeling exhausted even after sleeping for several hours?",
+                    "3. Do you spend long hours consuming distressing news or comparing your life on social media?",
+                    "4. Do you notice shallow breathing or muscle tension and forget to breathe deeply during the day?",
+                    "5. Do you tend to isolate yourself from others and lose interest in activities you once enjoyed?",
+                    "6. Does your day feel like a draining routine lacking moments of spiritual peace and gratitude?"
+                ],
+                breathBadge: "Key #1 to Physical Energy",
+                breathTitle: "Guided Deep Breathing Coach",
+                breathDesc: "Most people use less than 1/3 of their lung capacity. Deep rhythmic breathing oxygenates brain cells and immediately calms the nervous system.",
+                breathStartText: "Tap to Start",
+                breathBtnStart: "Start Interactive Breathing Session",
+                breathBtnStop: "Stop Session",
+                breathPhases: { inhale: "Inhale Deeply...", hold: "Hold Gently...", exhale: "Exhale Slowly..." },
+                checklistBadge: "Daily Practical Habits",
+                checklistTitle: "Daily Psychological Immunity & Recovery Checklist",
+                checklistDoneLabel: "Completed Today",
+                checklistItems: [
+                    { title: "Morning Mental Diet Filter", desc: "Start your day with mindfulness & optimism; avoid negative news in the first hour." },
+                    { title: "5-Minute Deep Breathing", desc: "Practice deep belly breathing to oxygenate your brain and renew cellular energy." },
+                    { title: "Apply 'Cancel & Replace'", desc: "Catch negative self-talk immediately and replace it with a balanced, constructive thought." },
+                    { title: "15 Mins Movement & Sunlight", desc: "A brisk walk or heart-healthy exercise to boost Serotonin and Dopamine naturally." },
+                    { title: "Eliminate Digestion Energy Thieves", desc: "Avoid heavy late-night meals and excessive stimulants that disrupt deep sleep." },
+                    { title: "Evening Spiritual Peace & Gratitude", desc: "Write down 3 blessings from your day and reconnect with inner peace before bed." }
+                ],
+                footerChannelTitle: "Abouawd Studio | Where Does Depression Come From?",
+                footerDisclaimer: "Educational interactive platform for mental well-being and self-awareness (Not a substitute for professional medical advice).",
+                footerCreditPrimary: "تصميم محمد عوض خير بمساعدة Gemini 4 Argon",
+                footerCreditSecondary: "Designed by Mohamed Awad Khair with the help of Gemini 4 Argon"
+            }
+        };
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const htmlEl = document.documentElement;
+            const iconEl = document.getElementById('theme-icon');
+            if (isDarkMode) {
+                htmlEl.classList.add('dark');
+                iconEl.className = 'fa-solid fa-sun text-lg';
+            } else {
+                htmlEl.classList.remove('dark');
+                iconEl.className = 'fa-solid fa-moon text-lg';
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlEl = document.documentElement;
+            htmlEl.setAttribute('lang', currentLang);
+            htmlEl.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            renderAll();
+        }
+
+        function renderAll() {
+            const t = contentData[currentLang];
+
+            // Header & Nav
+            document.getElementById('nav-title').textContent = t.navTitle;
+            document.getElementById('nav-link-video').textContent = t.navLinks[0];
+            document.getElementById('nav-link-roots').textContent = t.navLinks[1];
+            document.getElementById('nav-link-sim').textContent = t.navLinks[2];
+            document.getElementById('nav-link-quiz').textContent = t.navLinks[3];
+            document.getElementById('nav-link-recovery').textContent = t.navLinks[4];
+            document.getElementById('lang-btn-text').textContent = t.langBtnText;
+
+            // Hero
+            document.getElementById('hero-badge').textContent = t.heroBadge;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-desc').textContent = t.heroDesc;
+            document.getElementById('stat-1-label').textContent = t.stat1Label;
+            document.getElementById('stat-2-label').textContent = t.stat2Label;
+            document.getElementById('stat-3-label').textContent = t.stat3Label;
+            document.getElementById('hero-btn-explore').textContent = t.heroBtnExplore;
+            document.getElementById('hero-btn-yt').textContent = t.heroBtnYt;
+            document.getElementById('chapters-title').innerHTML = `<i class="fa-solid fa-list-check"></i> ${t.chaptersTitle}`;
+
+            // Video Chapters
+            const chaptersContainer = document.getElementById('chapters-container');
+            chaptersContainer.innerHTML = t.chapters.map((ch, idx) => `
+                <button onclick="selectRootDimension(${idx}); document.getElementById('section-roots').scrollIntoView({behavior: 'smooth'});"
+                    class="text-start p-3 rounded-xl bg-slate-900/70 hover:bg-teal-500/20 border border-slate-700 hover:border-teal-500/40 transition flex items-start gap-3 group">
+                    <div class="w-8 h-8 rounded-lg bg-teal-500/15 text-teal-400 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition">
+                        <i class="fa-solid ${ch.icon} text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white group-hover:text-teal-300">${ch.title}</div>
+                        <div class="text-[11px] text-slate-400 mt-0.5 line-clamp-2">${ch.desc}</div>
+                    </div>
+                </button>
+            `).join('');
+
+            // Roots Explorer
+            document.getElementById('roots-badge').textContent = t.rootsBadge;
+            document.getElementById('roots-title').textContent = t.rootsTitle;
+            document.getElementById('roots-subtitle').textContent = t.rootsSubtitle;
+            renderRootsSection();
+
+            // Simulator
+            document.getElementById('sim-badge').textContent = t.simBadge;
+            document.getElementById('sim-title').textContent = t.simTitle;
+            document.getElementById('sim-desc').textContent = t.simDesc;
+            document.getElementById('slider-1-label').innerHTML = `<i class="fa-solid fa-comments text-teal-500 me-1.5"></i> ${t.slider1}`;
+            document.getElementById('slider-2-label').innerHTML = `<i class="fa-solid fa-tv text-rose-500 me-1.5"></i> ${t.slider2}`;
+            document.getElementById('slider-3-label').innerHTML = `<i class="fa-solid fa-heart-pulse text-indigo-500 me-1.5"></i> ${t.slider3}`;
+            document.getElementById('slider-4-label').innerHTML = `<i class="fa-solid fa-hands-praying text-amber-500 me-1.5"></i> ${t.slider4}`;
+            document.getElementById('sim-out-pos-label').textContent = t.simOutPosLabel;
+            document.getElementById('sim-out-neg-label').textContent = t.simOutNegLabel;
+            document.getElementById('sim-out-immunity-label').textContent = t.simOutImmLabel;
+            document.getElementById('sim-bar-pos-text').textContent = t.simBarPos;
+            document.getElementById('sim-bar-neg-text').textContent = t.simBarNeg;
+            updateSimulator();
+
+            // Cognitive Reframing
+            document.getElementById('reframe-badge').textContent = t.reframeBadge;
+            document.getElementById('reframe-title').textContent = t.reframeTitle;
+            document.getElementById('reframe-desc').textContent = t.reframeDesc;
+            renderReframingSection();
+
+            // Quiz
+            document.getElementById('quiz-badge').textContent = t.quizBadge;
+            document.getElementById('quiz-title').textContent = t.quizTitle;
+            document.getElementById('quiz-subtitle').textContent = t.quizSubtitle;
+            document.getElementById('quiz-reset-btn').textContent = t.quizResetBtn;
+            renderQuizSection();
+
+            // Breathing & Checklist
+            document.getElementById('breath-badge').textContent = t.breathBadge;
+            document.getElementById('breath-title').textContent = t.breathTitle;
+            document.getElementById('breath-desc').textContent = t.breathDesc;
+            if (!isBreathing) {
+                document.getElementById('breath-phase-text').textContent = t.breathStartText;
+                document.getElementById('breath-btn-label').textContent = t.breathBtnStart;
+            } else {
+                document.getElementById('breath-btn-label').textContent = t.breathBtnStop;
+            }
+            document.getElementById('checklist-badge').textContent = t.checklistBadge;
+            document.getElementById('checklist-title').textContent = t.checklistTitle;
+            document.getElementById('checklist-progress-label').textContent = t.checklistDoneLabel;
+            renderChecklistSection();
+
+            // Footer
+            document.getElementById('footer-channel-title').textContent = t.footerChannelTitle;
+            document.getElementById('footer-disclaimer').textContent = t.footerDisclaimer;
+            document.getElementById('footer-credit-primary').textContent = t.footerCreditPrimary;
+            document.getElementById('footer-credit-secondary').textContent = t.footerCreditSecondary;
+        }
+
+        function selectRootDimension(index) {
+            activeRootIndex = index;
+            renderRootsSection();
+        }
+
+        function renderRootsSection() {
+            const t = contentData[currentLang];
+            const tabsEl = document.getElementById('roots-tabs');
+            tabsEl.innerHTML = t.rootsDimensions.map((dim, idx) => {
+                const isActive = idx === activeRootIndex;
+                return `
+                    <button onclick="selectRootDimension(${idx})"
+                        class="p-4 rounded-2xl text-start transition-all border flex flex-col justify-between gap-2 ${
+                            isActive
+                                ? 'tab-active border-transparent scale-[1.02]'
+                                : 'bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800/80 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200'
+                        }">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center ${isActive ? 'bg-white/20 text-white' : 'bg-teal-500/10 text-teal-600 dark:text-teal-400'}">
+                            <i class="fa-solid ${dim.icon} text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="font-extrabold text-sm sm:text-base">${dim.title}</div>
+                            <div class="text-xs mt-0.5 ${isActive ? 'text-teal-100' : 'text-slate-500 dark:text-slate-400'}">${dim.short}</div>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+
+            const activeDim = t.rootsDimensions[activeRootIndex];
+            const detailEl = document.getElementById('root-detail-card');
+            detailEl.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${activeDim.color} text-white flex items-center justify-center shadow-lg shrink-0">
+                                <i class="fa-solid ${activeDim.icon} text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-black">${activeDim.title}</h3>
+                                <p class="text-xs sm:text-sm text-teal-600 dark:text-teal-400 font-semibold">${activeDim.short}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-medium">
+                        ${activeDim.summary}
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        ${activeDim.points.map(pt => `
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 space-y-2">
+                                <div class="font-bold text-teal-600 dark:text-teal-400 flex items-center gap-2 text-sm sm:text-base">
+                                    <i class="fa-solid fa-circle-dot text-xs"></i>
+                                    <span>${pt.title}</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${pt.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-teal-500/10 to-indigo-500/10 border border-teal-500/30 flex items-start gap-3.5">
+                        <div class="w-9 h-9 rounded-xl bg-teal-500 text-white flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+                        <p class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100 leading-relaxed">
+                            ${activeDim.antidote}
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateSimulator() {
+            const selfTalk = parseInt(document.getElementById('input-selftalk').value, 10);
+            const mediaNeg = parseInt(document.getElementById('input-media').value, 10);
+            const vitality = parseInt(document.getElementById('input-vitality').value, 10);
+            const spirit = parseInt(document.getElementById('input-spirit').value, 10);
+
+            document.getElementById('slider-1-val').textContent = selfTalk + '%';
+            document.getElementById('slider-2-val').textContent = mediaNeg + '%';
+            document.getElementById('slider-3-val').textContent = vitality + '%';
+            document.getElementById('slider-4-val').textContent = spirit + '%';
+
+            // Calculate overall resilience score (0 to 100)
+            const rawPositive = (selfTalk * 0.35) + ((100 - mediaNeg) * 0.25) + (vitality * 0.20) + (spirit * 0.20);
+            const immunityScore = Math.max(8, Math.min(96, Math.round(rawPositive)));
+
+            const totalThoughts = 60000;
+            const positiveThoughts = Math.round((immunityScore / 100) * totalThoughts);
+            const negativeThoughts = totalThoughts - positiveThoughts;
+
+            document.getElementById('sim-out-pos-val').textContent = positiveThoughts.toLocaleString();
+            document.getElementById('sim-out-neg-val').textContent = negativeThoughts.toLocaleString();
+            document.getElementById('sim-out-immunity-val').textContent = immunityScore + '%';
+            document.getElementById('sim-bar-fill').style.width = immunityScore + '%';
+
+            const statusMsgEl = document.getElementById('sim-status-msg');
+            if (currentLang === 'ar') {
+                if (immunityScore >= 70) {
+                    statusMsgEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 me-1.5"></i> <strong>حالة توازن وحصانة مرتفعة:</strong> عاداتك الفكرية والحيوية والروحية تغذي دماغك بالسيروتونين والدوبامين وتحميك من لصوص الطاقة والاكتئاب.`;
+                } else if (immunityScore >= 45) {
+                    statusMsgEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-400 me-1.5"></i> <strong>حالة تذبذب واستنزاف جزئي:</strong> هناك تسرب للطاقة النفسية بسبب القلق أو التعرض للمؤثرات السلبية. خفف من متابعة السلبيات ومارس التنفس العميق.`;
+                } else {
+                    statusMsgEl.innerHTML = `<i class="fa-solid fa-bell text-rose-400 me-1.5"></i> <strong>تحذير: بيئة خصبة للاكتئاب والاستنزاف!</strong> أغلب أفكارك اليومية (${negativeThoughts.toLocaleString()} فكرة) تعمل ضدك وتستنزف طاقتك الجسدية والعاطفية. ابدأ فوراً بفلترة أفكارك وتعديل نمط نومك وتنفسك.`;
+                }
+            } else {
+                if (immunityScore >= 70) {
+                    statusMsgEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 me-1.5"></i> <strong>High Resilience & Inner Balance:</strong> Your mental diet, vitality, and spiritual grounding actively nourish your brain chemistry and shield you from depression.`;
+                } else if (immunityScore >= 45) {
+                    statusMsgEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-400 me-1.5"></i> <strong>Moderate Energy Drain:</strong> Energy thieves like media exposure or self-doubt are consuming your mental fuel. Reduce negative inputs and prioritize deep breathing.`;
+                } else {
+                    statusMsgEl.innerHTML = `<i class="fa-solid fa-bell text-rose-400 me-1.5"></i> <strong>High Risk of Mental Depletion!</strong> Most of your daily thoughts (${negativeThoughts.toLocaleString()} thoughts) are working against your well-being. Start filtering your mental inputs and restoring sleep & movement today.`;
+                }
+            }
+        }
+
+        function selectThought(idx) {
+            activeThoughtIndex = idx;
+            renderReframingSection();
+        }
+
+        function renderReframingSection() {
+            const t = contentData[currentLang];
+            const listEl = document.getElementById('thought-buttons-list');
+            listEl.innerHTML = t.thoughts.map((item, idx) => {
+                const isSelected = idx === activeThoughtIndex;
+                return `
+                    <button onclick="selectThought(${idx})"
+                        class="w-full text-start p-3.5 rounded-2xl border text-xs sm:text-sm font-bold transition flex items-center justify-between gap-2 ${
+                            isSelected
+                                ? 'bg-rose-500/15 border-rose-500 text-rose-700 dark:text-rose-300 shadow-sm'
+                                : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/70 hover:bg-slate-100 dark:hover:bg-slate-800'
+                        }">
+                        <span class="line-clamp-2">${item.neg}</span>
+                        <i class="fa-solid fa-wand-magic-sparkles shrink-0 ${isSelected ? 'text-rose-500' : 'text-slate-400'}"></i>
+                    </button>
+                `;
+            }).join('');
+
+            const activeItem = t.thoughts[activeThoughtIndex];
+            const boxEl = document.getElementById('thought-transform-box');
+            boxEl.innerHTML = `
+                <div class="space-y-3">
+                    <div class="text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <span>${activeItem.distortion}</span>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-900 dark:text-emerald-200 text-sm sm:text-base font-bold leading-relaxed">
+                        <i class="fa-solid fa-check-double text-emerald-500 me-1.5"></i>
+                        ${activeItem.pos}
+                    </div>
+                </div>
+            `;
+        }
+
+        function answerQuiz(qIndex, score) {
+            quizAnswers[qIndex] = score;
+            renderQuizSection();
+        }
+
+        function resetQuiz() {
+            quizAnswers = [null, null, null, null, null, null];
+            renderQuizSection();
+        }
+
+        function renderQuizSection() {
+            const t = contentData[currentLang];
+            const container = document.getElementById('quiz-questions-container');
+
+            container.innerHTML = t.quizQuestions.map((qText, qIdx) => {
+                const selectedScore = quizAnswers[qIdx];
+                return `
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-between gap-4">
+                        <p class="font-bold text-sm sm:text-base leading-relaxed">${qText}</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            ${t.quizOptions.map(opt => {
+                                const isSelected = selectedScore === opt.score;
+                                return `
+                                    <button onclick="answerQuiz(${qIdx}, ${opt.score})"
+                                        class="py-2 px-2.5 rounded-xl text-xs font-bold border transition ${
+                                            isSelected
+                                                ? 'bg-teal-600 text-white border-teal-600 shadow-md'
+                                                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:border-teal-500/50'
+                                        }">
+                                        ${opt.label}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const answeredCount = quizAnswers.filter(a => a !== null).length;
+            const totalScore = quizAnswers.reduce((acc, val) => acc + (val || 0), 0);
+            const resultPanel = document.getElementById('quiz-result-panel');
+
+            if (answeredCount < 6) {
+                resultPanel.innerHTML = `
+                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300 text-sm sm:text-base font-semibold">
+                        <i class="fa-solid fa-circle-info text-teal-500 text-xl"></i>
+                        <span>${currentLang === 'ar'
+                            ? `أجبت على ${answeredCount} من 6 أسئلة. أكمل جميع الأسئلة لعرض تحليل حالتك وتوصياتك المخصصة.`
+                            : `You have answered ${answeredCount} of 6 questions. Complete all questions to view your personalized analysis.`
+                        }</span>
+                    </div>
+                `;
+                return;
+            }
+
+            let badgeColor = 'bg-emerald-500';
+            let statusTitle = '';
+            let statusAdvice = '';
+
+            if (totalScore <= 3) {
+                badgeColor = 'bg-emerald-500';
+                statusTitle = currentLang === 'ar' ? 'توازن نفسي وحيوي ممتاز (درجة الاستنزاف منخفضة)' : 'Healthy Balance & High Resilience (Low Depletion)';
+                statusAdvice = currentLang === 'ar'
+                    ? 'أنت تمتلك وعياً جيداً بإدارة أفكارك وطاقتك. استمر في الحفاظ على وردك الروحي، التنفس العميق، والابتعاد عن المقارنات السلبية.'
+                    : 'You demonstrate strong awareness of your thoughts and energy. Keep nurturing your spiritual peace, deep breathing, and healthy boundaries.';
+            } else if (totalScore <= 7) {
+                badgeColor = 'bg-amber-500';
+                statusTitle = currentLang === 'ar' ? 'إجهاد نفسي متوسط (انتبه للصوص الطاقة)' : 'Moderate Mental Fatigue (Watch Out for Energy Thieves)';
+                statusAdvice = currentLang === 'ar'
+                    ? 'هناك بعض المسببات التي تستنزف طاقتك وتفتح الباب للضيق. ابدأ بتقليل التعرض للشاشات، وطبّق تمرين التنفس العميق وحقيبة التعافي بالأسفل.'
+                    : 'Several energy thieves are draining your mental vitality. Reduce screen comparison, practice the guided breathing exercise below, and adjust your sleep routine.';
+            } else {
+                badgeColor = 'bg-rose-500';
+                statusTitle = currentLang === 'ar' ? 'استنزاف نفسي مرتفع (تحتاج إلى رعاية وتجديد شامل)' : 'High Emotional & Energy Depletion (Action & Care Needed)';
+                statusAdvice = currentLang === 'ar'
+                    ? 'أنت تحمل عبئاً كبيراً من الأفكار السلبية والمرهقات الحيوية. لا تتردد في طلب الدعم من المختصين النفسيين، وابدأ خطوة بخطوة بتفريغ القلق واستعادة توازنك الجسدي والروحي.'
+                    : 'You are carrying a heavy load of negative thoughts and physical exhaustion. Consider consulting a mental health professional and gently begin daily recovery habits.';
+            }
+
+            resultPanel.innerHTML = `
+                <div class="space-y-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full ${badgeColor} text-white text-xs font-bold">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>${currentLang === 'ar' ? `النتيجة: ${totalScore} / 12` : `Score: ${totalScore} / 12`}</span>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-black">${statusTitle}</h4>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">${statusAdvice}</p>
+                </div>
+            `;
+        }
+
+        function toggleBreathing() {
+            const t = contentData[currentLang];
+            const circle = document.getElementById('breath-circle');
+            const phaseText = document.getElementById('breath-phase-text');
+            const timerText = document.getElementById('breath-timer-text');
+            const btnIcon = document.getElementById('breath-btn-icon');
+            const btnLabel = document.getElementById('breath-btn-label');
+
+            if (isBreathing) {
+                clearInterval(breathingInterval);
+                isBreathing = false;
+                circle.className = 'w-40 h-40 rounded-full bg-gradient-to-tr from-teal-500 to-indigo-500 flex flex-col items-center justify-center text-center p-4 shadow-xl breathing-circle';
+                phaseText.textContent = t.breathStartText;
+                timerText.textContent = '--';
+                btnIcon.className = 'fa-solid fa-play';
+                btnLabel.textContent = t.breathBtnStart;
+                return;
+            }
+
+            isBreathing = true;
+            btnIcon.className = 'fa-solid fa-stop';
+            btnLabel.textContent = t.breathBtnStop;
+
+            let step = 0; // 0-3 Inhale, 4-7 Hold, 8-11 Exhale
+            const runCycle = () => {
+                const curT = contentData[currentLang];
+                const phaseMod = step % 12;
+                if (phaseMod < 4) {
+                    circle.className = 'w-40 h-40 rounded-full bg-gradient-to-tr from-teal-500 to-emerald-500 flex flex-col items-center justify-center text-center p-4 shadow-xl breathing-circle breathing-inhale';
+                    phaseText.textContent = curT.breathPhases.inhale;
+                    timerText.textContent = (4 - phaseMod) + 's';
+                } else if (phaseMod < 8) {
+                    circle.className = 'w-40 h-40 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex flex-col items-center justify-center text-center p-4 shadow-xl breathing-circle breathing-hold';
+                    phaseText.textContent = curT.breathPhases.hold;
+                    timerText.textContent = (8 - phaseMod) + 's';
+                } else {
+                    circle.className = 'w-40 h-40 rounded-full bg-gradient-to-tr from-teal-600 to-slate-700 flex flex-col items-center justify-center text-center p-4 shadow-xl breathing-circle breathing-exhale';
+                    phaseText.textContent = curT.breathPhases.exhale;
+                    timerText.textContent = (12 - phaseMod) + 's';
+                }
+                step++;
+            };
+
+            runCycle();
+            breathingInterval = setInterval(runCycle, 1000);
+        }
+
+        function toggleChecklistItem(idx) {
+            checklistState[idx] = !checklistState[idx];
+            renderChecklistSection();
+        }
+
+        function renderChecklistSection() {
+            const t = contentData[currentLang];
+            const container = document.getElementById('checklist-items');
+            const completedCount = checklistState.filter(Boolean).length;
+
+            document.getElementById('checklist-progress-num').textContent = `${completedCount} / 6`;
+            document.getElementById('checklist-bar').style.width = `${Math.round((completedCount / 6) * 100)}%`;
+
+            container.innerHTML = t.checklistItems.map((item, idx) => {
+                const checked = checklistState[idx];
+                return `
+                    <button onclick="toggleChecklistItem(${idx})"
+                        class="p-4 rounded-2xl border text-start transition-all flex items-start gap-3.5 ${
+                            checked
+                                ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-950 dark:text-emerald-100'
+                                : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/70 hover:border-teal-500/40'
+                        }">
+                        <div class="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition ${
+                            checked ? 'bg-emerald-500 text-white' : 'border-2 border-slate-300 dark:border-slate-600'
+                        }">
+                            ${checked ? '<i class="fa-solid fa-check text-xs"></i>' : ''}
+                        </div>
+                        <div>
+                            <div class="font-bold text-sm ${checked ? 'line-through opacity-80' : ''}">${item.title}</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">${item.desc}</div>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Initialize on window load
+        window.onload = function () {
+            renderAll();
+        };
+    </script>
+</body>
+</html>
